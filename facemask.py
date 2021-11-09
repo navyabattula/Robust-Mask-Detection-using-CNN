@@ -20,7 +20,18 @@ import datetime
 
 # BUILDING MODEL TO CLASSIFY BETWEEN MASK AND NO MASK
 # IMPLEMENTING LIVE DETECTION OF FACE MASK
+model=Sequential()
+model.add(Conv2D(32,(3,3),activation='relu',input_shape=(150,150,3)))
+model.add(MaxPooling2D() )
+model.add(Conv2D(32,(3,3),activation='relu'))
+model.add(MaxPooling2D() )
+model.add(Conv2D(32,(3,3),activation='relu'))
+model.add(MaxPooling2D() )
+model.add(Flatten())
+model.add(Dense(100,activation='relu'))
+model.add(Dense(1,activation='sigmoid'))
 
+model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(
@@ -42,7 +53,14 @@ test_set = test_datagen.flow_from_directory(
         target_size=(150,150),
         batch_size=16,
         class_mode='binary')
+model_saved=model.fit_generator(
+        training_set,
+        epochs=10,
+        validation_data=test_set,
 
+        )
+
+model.save('mymodel.h5',model_saved)
 
 
 mymodel=load_model('mymodel.h5')
