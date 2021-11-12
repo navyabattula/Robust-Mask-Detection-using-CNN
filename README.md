@@ -1,2 +1,2 @@
 # Robust-Mask-Detection-using-CNN
-Robust Face Mask detection is a major project submitted to Prasad V. Potluri Siddhartha Institute of Technology for the fullfillment of 4th year 2nd semester credits. 
+In this project we have worked on robust mask detection system in an attempt to make it a real time project. With the help of Open CV framework and Keras, we were able to build a model that recognizes human faces in live stream and not only that but also detects whether they are correctly wearing the mask or not. It detects various styles of wearing masks and identifies one correct style of wearing a mask and makes judgements based on that.
